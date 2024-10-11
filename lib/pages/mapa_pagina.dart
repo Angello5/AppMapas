@@ -209,11 +209,15 @@ class MapaPaginaState extends State<MapaPagina> {
       });
 
       // Mostrar un mensaje de éxito
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Ruta encontrada y mostrada en el mapa')),
       );
 
-    } catch(e){
+    } catch(e,stack){
+      print('Error al buscar la ruta: $e');
+      print(stack);
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Error al buscar la ruta: ${e.toString()}')),
       );
