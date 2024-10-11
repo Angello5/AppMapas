@@ -1,24 +1,29 @@
-import 'package:mapas_app/pages/mapa_pagina.dart';
 import 'package:flutter/material.dart';
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 
 void main(){
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget{
-  const MyApp({super.key});
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Mapas App',
-      theme: ThemeData(
-        primarySwatch: Colors.cyan,
+      home: Scaffold(
+        appBar: AppBar(title: Text('Test App')),
+        body: Center(
+          child: ElevatedButton(
+            onPressed: _getPath,
+            child: Text('Get Path'),
+          ),
+        ),
       ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => MapaPagina(),
-      },
     );
+  }
+
+  void _getPath() async {
+    Directory dir = await getApplicationDocumentsDirectory();
+    print('Path: ${dir.path}');
   }
 }
