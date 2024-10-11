@@ -4,16 +4,16 @@ import 'package:latlong2/latlong.dart';
 import 'package:mapas_app/services/dijkstra.dart';
 import 'package:mapas_app/services/graph_service.dart';
 import 'package:mapas_app/models/node.dart';
-import 'package:mapas_app/models/edge.dart';
 import 'package:mapas_app/services/geocoding_service.dart'; // Servicio de geocodificación
 import 'dart:math';
 
 class MapaPagina extends StatefulWidget {
+  const MapaPagina({super.key});
   @override
-  _MapaPaginaState createState() => _MapaPaginaState();
+  MapaPaginaState createState() => MapaPaginaState();
 }
 
-class _MapaPaginaState extends State<MapaPagina> {
+class MapaPaginaState extends State<MapaPagina> {
   final MapController mapController = MapController();
   List<Marker> markers = [];
   List<Polyline> polylines = [];
